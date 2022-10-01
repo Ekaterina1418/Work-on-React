@@ -1,13 +1,19 @@
 {
-  "name": "office",
+  "name": "y",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.1.0",
+    "react-redux": "^8.0.4",
+    "redux": "^4.2.0",
+    "styled-components": "^5.3.6",
     "react-scripts": "^2.1.3",
     "web-vitals": "^2.1.4"
   },
@@ -34,5 +40,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "1. Подготовка.   *  Создать проект и  установить все вспомогательные библиотеки.   *  Определить количество страниц и роутинг этих страниц.   *  Разбить главную страницу на компоненты, определить функцию каждого компонента и их связь друг с другом.    *  Определить основные стили дизайна : - размер страницы                                          - шрифт                                          - цвета",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekaterina1418/Work-on-React.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ekaterina1418/Work-on-React/issues"
+  },
+  "homepage": "https://github.com/Ekaterina1418/Work-on-React#readme"
 }
