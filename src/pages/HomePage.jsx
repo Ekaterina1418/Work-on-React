@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { fetchUser } from '../redux/users/userSlice'
 import Users from '../components/Users/Users'
-
+import Input from '../components/Input/Input'
 function HomePage() {
   const dispatch = useDispatch()
   const { users, error } = useSelector((state) => state.users)
@@ -12,8 +12,11 @@ function HomePage() {
     dispatch(fetchUser())
   }, [])
 
+const [value, setValueStorage] = useState('')
+
   return (
     <>
+    <Input inputValue={setValueStorage}/>
       {users &&
         users.map((user, index) => {
           return (
