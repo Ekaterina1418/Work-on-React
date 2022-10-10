@@ -4,8 +4,9 @@ import {
   ContainerImage,
   TitleName,
   UserBlock,
-} from './UserStyled/UsersStyled'
-function Users(props) {
+} from './style/Users.style'
+
+export const Users = (props) => {
   const { firstName, lastName, avatarUrl, position } = props
   return (
     <UserBlock>

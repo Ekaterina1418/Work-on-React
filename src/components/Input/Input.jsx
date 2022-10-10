@@ -3,8 +3,8 @@ import {
   InputStyled,
   InputWrapper,
   InputTitle,
-} from '../styles/InputStyled/Input'
-function Input({ inputValue }) {
+} from './style/Input.style'
+export const Input = ({ inputValue }) => {
   return (
     <>
       <InputTitle>Поиск</InputTitle>
@@ -17,4 +17,4 @@ function Input({ inputValue }) {
     </>
   )
 }
-export default Input
+

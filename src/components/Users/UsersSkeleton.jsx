@@ -9,7 +9,7 @@ import {
 function UsersSkeleton({ user }) {
   return Array(user)
     .fill(0)
-    .map((item, index) => (
+    .map((_, index) => (
       <div key={index}>
         <SkeletonTheme baseColor="#F3F3F6" highlightColor="#FAFAFA">
           <SkeletonContainer>
