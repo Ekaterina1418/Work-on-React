@@ -2,9 +2,11 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { fetchUser } from '../redux/users/userSlice'
+import { HTTP_STATUS } from '../redux/users/constants'
 import { Users } from '../components/Users/Users'
 import { Input } from '../components/Input/Input'
 import { CriticalError } from  '../components/CriticalError/CriticalError'
+import { UsersSkeleton } from '../components/Users/UsersSkeleton'
 function HomePage() {
   const dispatch = useDispatch()
   const { users, error } = useSelector((state) => state.users)
@@ -31,7 +33,8 @@ const [value, setValueStorage] = useState('')
           )
         })}
 
-      {error && <CriticalError refetch = {() => dispatch(fetchUser())} />}
+      {error && <CriticalError refetch={() => dispatch(fetchUser())} />}
+      {loading === HTTP_STATUS.PENDING && <UsersSkeleton user={12} />}
     </>
   )
 }

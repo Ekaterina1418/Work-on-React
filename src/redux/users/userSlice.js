@@ -7,7 +7,7 @@ export const fetchUser = createAsyncThunk(
   async (arg, {rejectWithValue}) => {
     try {
       const response = await axios.get(
-         'https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=al',
+         'https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all',
       )
       return response.data.items
     } catch (error) {

@@ -5,8 +5,8 @@ import {
   SkeletonContainer,
   SkeletonImage,
   SkeletonName,
-} from './UserStyled/SkeletonStyled'
-function UsersSkeleton({ user }) {
+} from './style/Skeleton.style'
+export const  UsersSkeleton = ({ user }) => {
   return Array(user)
     .fill(0)
     .map((_, index) => (
