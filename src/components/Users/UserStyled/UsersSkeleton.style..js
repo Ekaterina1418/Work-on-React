@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SkeletonContainer = styled.div`
   display: flex;
@@ -11,5 +11,5 @@ export const SkeletonImage = styled.div`
 export const SkeletonName = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top:10px;
+  padding-top: 10px;
 `

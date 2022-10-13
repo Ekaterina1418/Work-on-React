@@ -1,16 +1,19 @@
-import React from "react";
-import  HomePage  from './pages/HomePage'
-import { Container } from './styles/Container.style'
-import GlobalStyles from './styles/Global'
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import GlobalStyles from './components/styles/Global'
+import { UserPage } from './pages/UserPage'
+
 function App() {
   return (
-    <div className="App">
+    <div>
       <GlobalStyles />
-      <Container>
-        <HomePage />
-      </Container>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/profile/:id" element={<UserPage />} />
+      </Routes>
     </div>
   )
 }
 
-export default App;
+export default App

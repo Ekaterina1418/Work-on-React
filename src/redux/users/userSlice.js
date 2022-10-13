@@ -4,10 +4,10 @@ import { HTTP_STATUS } from './constants'
 
 export const fetchUser = createAsyncThunk(
   'users/getUser',
-  async (arg, {rejectWithValue}) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-         'https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all',
+        'https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all'
       )
       return response.data.items
     } catch (error) {
@@ -29,14 +29,14 @@ const userSlice = createSlice({
       state.loading = HTTP_STATUS.PENDING
     },
     [fetchUser.fulfilled]: (state, action) => {
-       state.loading = HTTP_STATUS.FULFILLED
-       state.users = action.payload
-       state.isSuccess = true
+      state.loading = HTTP_STATUS.FULFILLED
+      state.users = action.payload
+      state.isSuccess = true
     },
     [fetchUser.rejected]: (state, action) => {
-       state.error = action.payload
-       state.loading = HTTP_STATUS.REJECTED
-       state.isSuccess = false
+      state.error = action.payload
+      state.loading = HTTP_STATUS.REJECTED
+      state.isSuccess = false
     },
   },
 })
