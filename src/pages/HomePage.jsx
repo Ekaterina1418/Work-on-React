@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { format } from 'date-fns'
+import { compareDesc } from 'date-fns/esm/fp'
 import { useSearchParams } from 'react-router-dom'
 import { Input } from '../components/Input/Input'
 import { RenderBirthday } from '../components/Users/RenderBirthday'
@@ -38,22 +39,25 @@ function HomePage() {
   const sortedUsers =
     filteredUsers &&
     filteredUsers.sort((userA, userB) => {
-      if (valueRadio === 'alphabet') {
-        return userA.firstName > userB.firstName
-      }
+       if (valueRadio === 'birthday') {
+         return compareDesc(new Date(userA.birthday), new Date(userB.birthday))
+       }
+       if (valueRadio === 'alphabet') {
+         return userA.firstName > userB.firstName
+       }
     })
 
   const birthday =
     sortedUsers &&
     sortedUsers.map((item) => {
-      // return compareDesc(
-      //  format(new Date(item.birthday),'dd MM'),
-      //    format(new Date(), 'dd MMM'))
+      compareDesc(
+       format(new Date(item.birthday),'dd MM'),
+         format(new Date(), 'dd MMM'))
 
-      //  })
+       
 
       return format(new Date(item.birthday), 'dd MM')
-    })
+      })
   return (
     <>
       <Container>
