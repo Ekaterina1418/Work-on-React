@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import compareDesc from 'date-fns/compareDesc'
 import { format } from 'date-fns'
-import { ru } from 'date-fns/locale'
 import { useSearchParams } from 'react-router-dom'
 import { Input } from '../components/Input/Input'
 import { RenderBirthday } from '../components/Users/RenderBirthday'
@@ -13,8 +11,6 @@ import { useGetUsersByDepartmentQuery } from '../redux/users/apiSlice'
 import Modal from '../components/ModalWindow/Modal'
 import { Container } from '../components/styles/Container.style.'
 import { BlockDay, Wrapper } from '../components/Users/UserStyled/Users.style'
-
-
 
 function HomePage() {
   const [value, setValue] = useState('')
@@ -42,24 +38,21 @@ function HomePage() {
   const sortedUsers =
     filteredUsers &&
     filteredUsers.sort((userA, userB) => {
-       if (valueRadio === 'alphabet') {
-         return userA.firstName > userB.firstName
-       }
-    
-     
+      if (valueRadio === 'alphabet') {
+        return userA.firstName > userB.firstName
+      }
     })
-   
-    const birthday = sortedUsers && sortedUsers.map( item => {
-     // return compareDesc(
-    //  format(new Date(item.birthday),'dd MM'),
-    //    format(new Date(), 'dd MMM'))
-       
-    //  })
-   
-     return format(new Date(item.birthday), 'dd MM')
-    
-         
 
+  const birthday =
+    sortedUsers &&
+    sortedUsers.map((item) => {
+      // return compareDesc(
+      //  format(new Date(item.birthday),'dd MM'),
+      //    format(new Date(), 'dd MMM'))
+
+      //  })
+
+      return format(new Date(item.birthday), 'dd MM')
     })
   return (
     <>
