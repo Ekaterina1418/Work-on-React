@@ -1,10 +1,9 @@
 import React from 'react'
-import { Birthday } from './UserStyled/Users.style'
-
-export const UsersAge = ({ birthday }) => {
+export const UsersAge = (props) => {
+  const { birthday } = props
   return (
-    <Birthday>
-       {birthday}
-    </Birthday>
+    <div>
+      {birthday}
+    </div>
   )
 }

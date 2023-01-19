@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import compareDesc from 'date-fns/compareDesc'
-import { DateTime } from 'luxon'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
 import { useSearchParams } from 'react-router-dom'
 import { Input } from '../components/Input/Input'
+import { RenderBirthday } from '../components/Users/RenderBirthday'
 import { Users, UsersSkeleton, UsersContainer } from '../components/Users'
 import { CriticalError } from '../components/CriticalError/CriticalError'
 import { Departments } from '../components/Departments'
@@ -10,8 +12,8 @@ import { NotUsers } from '../components/NotUsers/NotUsers'
 import { useGetUsersByDepartmentQuery } from '../redux/users/apiSlice'
 import Modal from '../components/ModalWindow/Modal'
 import { Container } from '../components/styles/Container.style.'
-import { UsersAge } from '../components/Users/UsersAge'
-import { Wrapper } from '../components/Users/UserStyled/Users.style'
+import { BlockDay, Wrapper } from '../components/Users/UserStyled/Users.style'
+
 
 
 function HomePage() {
@@ -40,20 +42,25 @@ function HomePage() {
   const sortedUsers =
     filteredUsers &&
     filteredUsers.sort((userA, userB) => {
-      if (valueRadio === 'birthday') {
-        return compareDesc(new Date(userA.birthday), new Date(userB.birthday))
-      }
-      if (valueRadio === 'alphabet') {
-        return userA.firstName > userB.firstName
-      }
+       if (valueRadio === 'alphabet') {
+         return userA.firstName > userB.firstName
+       }
+    
+     
     })
-   const age =
-  filteredUsers &&
-  filteredUsers.map((user) => {
-    return DateTime.fromISO(user.birthday).setLocale('ru').toFormat('dd MMM')
-  })
+   
+    const birthday = sortedUsers && sortedUsers.map( item => {
+     // return compareDesc(
+    //  format(new Date(item.birthday),'dd MM'),
+    //    format(new Date(), 'dd MMM'))
+       
+    //  })
+   
+     return format(new Date(item.birthday), 'dd MM')
+    
+         
 
-
+    })
   return (
     <>
       <Container>
@@ -68,7 +75,6 @@ function HomePage() {
       <Departments />
       <Container>
         <Wrapper>
-          {valueRadio === 'birthday' && <UsersAge>{age}</UsersAge>}
           <UsersContainer>
             {isLoading && <UsersSkeleton user={12} />}
             {isSuccess && <Users users={sortedUsers} />}
@@ -82,9 +88,13 @@ function HomePage() {
                 setIsOpen(false)
               }}
             />
-            {filteredUsers == 0 && <NotUsers />}
           </UsersContainer>
+          <BlockDay>
+            {valueRadio === 'birthday' && <RenderBirthday day={birthday} />}
+          </BlockDay>
         </Wrapper>
+        {isError && <CriticalError refetch={refetch} />}
+        {filteredUsers == 0 && <NotUsers />}
       </Container>
     </>
   )

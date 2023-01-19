@@ -10,7 +10,7 @@ import {
   Birthday,
 } from './UserStyled/Users.style'
 export const Person = (props) => {
-  const { firstName, lastName, avatarUrl, position, userTag, birthday } = props
+  const { firstName, lastName, avatarUrl, position, userTag } = props
   return (
     <UserBlock>
       <ContainerImage>
@@ -22,7 +22,6 @@ export const Person = (props) => {
           <Span>{userTag}</Span>
         </Name>
         <Position>{position}</Position>
-        <Birthday>{birthday}</Birthday>
       </TitleName>
     </UserBlock>
   )

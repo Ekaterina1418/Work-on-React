@@ -8,6 +8,7 @@ export const UsersContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin-top: 22px;
+  width: 70%;
 `
 
 export const ContainerImage = styled.div`
@@ -61,7 +62,14 @@ export const Span = styled.span`
   }
 `
 export const Wrapper = styled.div`
+display: flex;
+justify-content:space-between;
+`
 
+export const BlockDay =  styled.div`
+display: flex;
+flex-direction:column;
+justify-content: space-around;
 `
 export const Birthday = styled.div`
   font-weight: 500;
